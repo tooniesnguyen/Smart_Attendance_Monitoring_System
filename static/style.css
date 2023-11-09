@@ -80,6 +80,16 @@ body {
     background-color: #333;
 }
 
+.lecture table{
+    border-collapse: collapse;
+    width: 100%;
+    color: #0f8f0f;
+    font-family: monospace;
+    font-size: 13px;
+    text-align: center;
+
+}
+
 .lecture td{
 
     width: 20%;

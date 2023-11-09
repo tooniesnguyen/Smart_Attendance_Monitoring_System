@@ -49,3 +49,19 @@ function updateTable(){
     }
     )
 }
+
+$.ajax({
+    url: "showData.php", //change to your php file (in my example data.php)
+    type: "get",
+    dataType: "JSON",
+    data: {}, //this is data you send to your server
+    success: function(res) {
+      console.log(res);
+      console.log(res.length);
+  
+      for (let i = 0; i < res.length; i++) {
+        $('#testing').append('<tr><td>' + res[i]['id'] + '</td><td>' + res[i]['rfid'] + '</td><td>' + res[i]['name']+ '</td><td>' + res[i]['class']+ '</td><td>' + res[i]['checkin'] + '</td></tr>')
+      }
+  
+    }
+  })

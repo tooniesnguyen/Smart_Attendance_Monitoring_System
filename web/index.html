@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Log in</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>    <!-- Include -->
+</head>
+<body>
+    <div class="login-container">
+        <h2>Đăng nhập</h2>
+        <input type="text" id="username" placeholder="Tên đăng nhập">
+        <input type="password" id="password" placeholder="Mật khẩu">
+        <button onclick="login_funct()">Đăng nhập</button>
+    </div>
+    <div class="admin" style="display: none;">
+        <h2>Chào mừng admin!</h2>
+        <p>Nội dung sau khi đăng nhập thành công.</p>
+    </div>
+    <div class="lecture" style="display: none;">
+        <h2>Chào mừng lecture!</h2>
+        <p>Nội dung sau khi đăng nhập thành công.</p>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

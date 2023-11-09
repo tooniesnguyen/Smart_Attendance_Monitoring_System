@@ -1,0 +1,74 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #222; /* Màu nền dark */
+    color: white; /* Màu chữ trắng */
+}
+
+.login {
+    width: 300px;
+    height: 300px;
+    border: 1px solid #444; /* Viền dark */
+    border-radius: 10px;
+    text-align: center;
+    background-color: #333; /* Màu nền dark cho phần login */
+}
+
+
+.login h2 {
+    color: #2f801b;
+    font-family: sans-serif;
+}
+
+.login input {
+    width: 80%;
+    height: 40px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #555; /* Viền dark cho input */
+    padding-left: 20px;
+    box-sizing: border-box;
+    background-color: #444; /* Màu nền dark cho input */
+    color: white; /* Màu chữ trắng */
+}
+
+.login button {
+    width: 80%;
+    height: 40px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #287415; /* Màu nền dark cho button */
+    color: antiquewhite;
+    transition: background-color 0.3s;
+}
+
+.login button:hover {
+    font-size: 18px;
+    background-color: #15410d; /* Màu nền dark khi hover */
+}
+
+
+.admin{
+    width: 600px;
+    height: 300px;
+    border: 1px solid #444; /* Viền dark */
+    border-radius: 10px;
+    text-align: center;
+    background-color: #333;
+}
+.admin th{
+    width: 40%;
+    height: 40px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #555; /* Viền dark cho input */
+    padding-left: 20px;
+    box-sizing: border-box;
+    background-color: #444; /* Màu nền dark cho input */
+    color: white;
+}
+

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Log in</title>
+    <meta charset="utf-8">
+    <link rel = "stylesheet" type = "text/css" href = "style.css">
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>    <!-- Include -->
+
+</head>
+<body>
+    <div class="login">
+        <h2>User login</h2>
+        <input type="text" id="username" placeholder="username">
+        <input type="password" id="password" placeholder="password">
+        <button onclick="login_funct()">Login</button>
+        
+    </div>
+    <div class="admin" style="display: none;">
+        <h2>User: admin</h2>
+        <h3>Update student information</h3>
+        <br>
+        <form action="" id="form">
+            <div class="mb-3">
+                <label for="mssv" class="form-label">Student ID</label>
+                <input type="text" class="form-control" name="id" id="mssv" aria-describedby="ghichu">
+            </div>
+            <div class="mb-3">
+                <label for="rfid" class="form-label">RFID</label>
+                <input type="text" class="form-control" name="rfid" id="rfid" aria-describedby="ghichu">
+            </div>
+            <div class="mb-3">
+                <label for="hoten" class="form-label">Name of Student</label>
+                <input type="text" class="form-control" name="name" id="name" aria-describedby="ghichu">
+            </div>
+
+            <div class="mb-3">
+                <label for="class_st" class="form-label">Class</label>
+                <input type="text" class="form-control" name="class_st" id="class_st" aria-describedby="ghichu">
+            </div>
+            <br>
+            <button type="submit" class="btn btn-primary">Update</button>
+
+            <table class="admin">
+                <tr>
+                    <th scope="col">Student ID</th> 
+                    <td id="id_tab">  </td>   
+                </tr>
+                <tr>
+                    <th scope="col">RFID</th> 
+                    <td id="rfid_tab">  </td>   
+                </tr>
+                <tr>
+                    <th scope="col">Name of Student</th> 
+                    <td id="name_tab"> </td>   
+                </tr>
+                <tr>
+                    <th scope="col">Class</th> 
+                    <td id="class_st_tab">  </td>   
+                </tr>
+            </table>
+    </div>
+
+
+    <div class="lecture" style="display: none;">
+        <h2>Chào mừng lecture!</h2>
+        <p>Nội dung sau khi đăng nhập thành công.</p>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

@@ -50,18 +50,17 @@ function updateTable(){
     )
 }
 
-$.ajax({
-    url: "showData.php", //change to your php file (in my example data.php)
-    type: "get",
-    dataType: "JSON",
-    data: {}, //this is data you send to your server
-    success: function(res) {
-      console.log(res);
-      console.log(res.length);
+setInterval(updateData, 1000);
+function updateData() {
+    $.post("showData.php", {}, function(res) {
+      $('#testing').empty(); // Xóa dữ liệu cũ trước khi thêm dữ liệu mới
   
       for (let i = 0; i < res.length; i++) {
-        $('#testing').append('<tr><td>' + res[i]['id'] + '</td><td>' + res[i]['rfid'] + '</td><td>' + res[i]['name']+ '</td><td>' + res[i]['class']+ '</td><td>' + res[i]['checkin'] + '</td></tr>')
+        $('#testing').append('<tr><td>' + res[i]['id'] + '</td><td>' + res[i]['rfid'] + '</td><td>' + res[i]['name']+ '</td><td>' + res[i]['class']+ '</td><td>' + res[i]['checkin'] + '</td></tr>');
       }
+    }, "json");
+  }
   
-    }
-  })
+  // Gọi hàm updateData ngay lập tức để cập nhật dữ liệu ban đầu
+updateData();
+ 

@@ -19,26 +19,26 @@
         
     </div>
     <div class="admin" style="display: none;">
-        <h2>User: admin</h2>
+        <h2>Position: admin</h2>
         <h3>Update student information</h3>
         <br>
         <form action="" id="form">
             <div class="mb-3">
-                <label for="mssv" class="form-label">Student ID</label>
-                <input type="text" class="form-control" name="id" id="mssv" aria-describedby="ghichu">
+                <label for="mssv" class="form-label" ></label>
+                <input type="text" class="form-control" name="id" id="mssv" aria-describedby="ghichu" placeholder = "Student ID">
             </div>
             <div class="mb-3">
-                <label for="rfid" class="form-label">RFID</label>
-                <input type="text" class="form-control" name="rfid" id="rfid" aria-describedby="ghichu">
+                <label for="rfid" class="form-label"></label>
+                <input type="text" class="form-control" name="rfid" id="rfid" aria-describedby="ghichu" placeholder="RFID">
             </div>
             <div class="mb-3">
-                <label for="hoten" class="form-label">Name of Student</label>
-                <input type="text" class="form-control" name="name" id="name" aria-describedby="ghichu">
+                <label for="hoten" class="form-label"></label>
+                <input type="text" class="form-control" name="name" id="name" aria-describedby="ghichu" placeholder="Name of Student">
             </div>
 
             <div class="mb-3">
-                <label for="class_st" class="form-label">Class</label>
-                <input type="text" class="form-control" name="class_st" id="class_st" aria-describedby="ghichu">
+                <label for="class_st" class="form-label"></label>
+                <input type="text" class="form-control" name="class_st" id="class_st" aria-describedby="ghichu" placeholder="Class">
             </div>
             <br>
             <button type="submit" class="btn btn-primary">Update</button>
@@ -61,11 +61,14 @@
                     <td id="class_st_tab">  </td>   
                 </tr>
             </table>
+        <button id="refreshButton">LogOut</button>
+        
     </div>
 
 
     <div class="lecture" style="display: none;">
-        <h2>User: Lecture</h2>
+        <h2>Position: Lecture</h2>
+        <h2><span id="inforclass"></span></h2>
         <table id="studentTable">
             <thead>
                 <td>ID Student</td>
@@ -78,10 +81,25 @@
             </tbody>
         </table>
 
+        <button id="refreshButton_Lecture">LogOut</button>
 
     </div>
     
-    <script>
+<script>
+
+
+
+
+document.getElementById("refreshButton").addEventListener("click", function() {
+    event.preventDefault();
+    location.reload(); // Làm trang web làm mới khi nút được nhấn
+});
+
+document.getElementById("refreshButton_Lecture").addEventListener("click", function() {
+    event.preventDefault();
+    location.reload(); // Làm trang web làm mới khi nút được nhấn
+});
+
 function login_funct(){
     $.post("readData.php", function(data){
     var username = document.getElementById("username").value;
@@ -105,6 +123,7 @@ function login_funct(){
             }
         }
     }
+    document.getElementById("inforclass").innerText =  "Class: " + username;
     })
 }
 
@@ -136,7 +155,8 @@ function updateTable(){
 
 setInterval(updateData, 1000);
 function updateData() {
-    $.post("showData.php", {}, function(res) {
+    if( document.getElementById("username").value == "20146_CLA"){
+    $.post("20146Data.php", {}, function(res) {
       $('#testing').empty(); // Xóa dữ liệu cũ trước khi thêm dữ liệu mới
   
       for (let i = 0; i < res.length; i++) {
@@ -144,11 +164,22 @@ function updateData() {
       }
     }, "json");
   }
+  else if( document.getElementById("username").value == "20143_CLA"){
+    $.post("20143Data.php", {}, function(res) {
+      $('#testing').empty(); // Xóa dữ liệu cũ trước khi thêm dữ liệu mới
+  
+      for (let i = 0; i < res.length; i++) {
+        $('#testing').append('<tr><td>' + res[i]['id'] + '</td><td>' + res[i]['rfid'] + '</td><td>' + res[i]['name']+ '</td><td>' + res[i]['class']+ '</td><td>' + res[i]['checkin'] + '</td></tr>');
+      }
+    }, "json");
+  }
+}
   
   // Gọi hàm updateData ngay lập tức để cập nhật dữ liệu ban đầu
 updateData();
  
 
-    </script>
+</script>
+
 </body>
 </html>

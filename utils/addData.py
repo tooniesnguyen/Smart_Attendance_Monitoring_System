@@ -8,7 +8,8 @@ def addData(rfid: str, checkin: str):
     try:
         cur.execute(f"update 20146_class set checkin = '{checkin}' where rfid = '{rfid}'")
         myconn.commit()
-        print("Update successs")
+        
+        return "ok" 
 
     except:
         myconn.rollback()

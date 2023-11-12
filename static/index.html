@@ -18,6 +18,7 @@
         <button onclick="login_funct()">Login</button>
         
     </div>
+    
     <div class="admin" style="display: none;">
         <h2>Position: admin</h2>
         <h3>Update student information</h3>
@@ -109,10 +110,12 @@ function login_funct(){
         if (data[i].username == username){
             if (data[i].pass == password){
                 if (data[i].position == "admin"){
+                    reloadCSS();
                     document.querySelector(".login").style.display = "none";
                     document.querySelector(".lecture").style.display = "none";
                     document.querySelector(".admin").style.display = "block";}
                 else{
+                    reloadCSS();
                     document.querySelector(".login").style.display = "none";
                     document.querySelector(".lecture").style.display = "block";
                     document.querySelector(".admin").style.display = "none";
@@ -173,11 +176,33 @@ function updateData() {
       }
     }, "json");
   }
+  else if( document.getElementById("username").value == "lecture"){
+    $.post("showData.php", {}, function(res) {
+      $('#testing').empty(); // Xóa dữ liệu cũ trước khi thêm dữ liệu mới
+  
+      for (let i = 0; i < res.length; i++) {
+        $('#testing').append('<tr><td>' + res[i]['id'] + '</td><td>' + res[i]['rfid'] + '</td><td>' + res[i]['name']+ '</td><td>' + res[i]['class']+ '</td><td>' + res[i]['checkin'] + '</td></tr>');
+      }
+    }, "json");
+  }
 }
   
   // Gọi hàm updateData ngay lập tức để cập nhật dữ liệu ban đầu
 updateData();
- 
+
+function reloadCSS() {
+    var links = document.getElementsByTagName('link');
+    for (var i = 0; i < links.length; i++) {
+        if (links[i].getAttribute('rel') === 'stylesheet') {
+            links[i].parentNode.removeChild(links[i]);
+        }
+    }
+    var newLink = document.createElement('link');
+    newLink.rel = 'stylesheet';
+    newLink.type = 'text/css';
+    newLink.href = 'style.css' + '?timestamp=' + new Date().getTime(); // Append timestamp to force a reload
+    document.head.appendChild(newLink);
+}
 
 </script>
 

@@ -16,13 +16,20 @@
         <input type="text" id="username" placeholder="username">
         <input type="password" id="password" placeholder="password">
         <button onclick="login_funct()">Login</button>
-        
+
+
+
     </div>
     
+
     <div class="admin" style="display: none;">
         <h2>Position: admin</h2>
         <h3>Update student information</h3>
         <br>
+        <form id="uploadForm" enctype="multipart/form-data">
+            <input type="file" id="csvFile" accept=".csv" />
+            <input type="submit" value="Submit" />
+        </form>
         <form action="" id="form">
             <div class="mb-3">
                 <label for="mssv" class="form-label" ></label>
@@ -62,6 +69,7 @@
                     <td id="class_st_tab">  </td>   
                 </tr>
             </table>
+
         <button id="refreshButton">LogOut</button>
         
     </div>
@@ -86,9 +94,8 @@
 
     </div>
     
+    <!-- ########################------------------------------------------------------------------############################ -->
 <script>
-
-
 
 
 document.getElementById("refreshButton").addEventListener("click", function() {
@@ -204,7 +211,35 @@ function reloadCSS() {
     document.head.appendChild(newLink);
 }
 
+
+document.getElementById('uploadForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Ngăn chặn gửi form mặc định
+            
+            const fileInput = document.getElementById('csvFile');
+            const file = fileInput.files[0];
+
+            if (file) {
+                const formData = new FormData();
+                formData.append('csvFile', file);
+
+                // Gửi file đến server
+                fetch('handle_csv.php', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.text())
+                .then(data => {
+                    alert(data); // Hiển thị kết quả từ PHP (có thể thay đổi tùy thuộc vào server response)
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+            } else {
+                alert("Vui lòng chọn một file CSV!");
+            }
+        });
 </script>
+    <!-- ########################------------------------------------------------------------------############################ -->
 
 </body>
 </html>

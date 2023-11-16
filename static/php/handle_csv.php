@@ -14,14 +14,14 @@ if ($_FILES['csvFile']['error'] == UPLOAD_ERR_OK && $_FILES['csvFile']['type'] =
             $row++;
             continue;
         }
-        $id = $data[0]; // Cột 1 trong file CSV
-        $rfid = $data[1]; // Cột 2 trong file CSV
-        $name = $data[2]; // Cột 1 trong file CSV
-        $class = $data[3]; // Cột 2 trong file CSV
-        
+        $sid = $data[0]; // Cột 1 trong file CSV
+        $name = $data[1]; // Cột 2 trong file CSV
+        $class = $data[2]; // Cột 1 trong file CSV
+
+
 
         // Thực hiện truy vấn chèn dữ liệu vào bảng của bạn, ví dụ:
-        $sql = "INSERT INTO  20146_class(id,rfid,name,class) values ('$id','$rfid','$name','$class')";
+        $sql = "INSERT INTO  class(sid, name,class) values ('$sid','$name','$class')";
         if ($conn->query($sql) === TRUE) {
             echo "Dữ liệu đã được chèn vào cơ sở dữ liệu thành công!";
         } else {

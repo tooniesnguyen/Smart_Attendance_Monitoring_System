@@ -1,7 +1,6 @@
 <?php
 // doc du lieu tu website gui ve
-$id = $_POST["id"];
-$rfid = $_POST["rfid"];
+$sid = $_POST["sid"];
 $name = $_POST["name"];
 $class = $_POST["class_st"];
 
@@ -9,7 +8,7 @@ $class = $_POST["class_st"];
 include("config.php");
 
 // gui data xuong database
-$sql = "insert into 20146_class(id,rfid,name,class) values ('$id','$rfid','$name','$class')";
+$sql = "insert into class(sid,name,class) values ('$sid','$name','$class')";
 mysqli_query($conn, $sql);
 
 // ngat ket noi voi database

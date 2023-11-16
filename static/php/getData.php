@@ -5,7 +5,7 @@ header('Content-Type: application/json');
 // ket noi database
 include("config.php");
 // doc du lieu tu database
-$sql = "select * from 20146_class where id=(select max(id) from 20146_class)";
+$sql = "select * from class where id=(select max(id) from class)";
 $result = mysqli_query($conn,$sql);
 // gui du lieu len website
 $data = array();

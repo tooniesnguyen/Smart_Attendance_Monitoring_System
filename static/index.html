@@ -25,16 +25,12 @@
         <br>
         <form id="uploadForm" enctype="multipart/form-data">
             <input type="file" id="csvFile" accept=".csv" />
-            <input type="submit" value="Submit" />
+            <input type="submit" value="Update CSV" />
         </form>
         <form action="" id="form">
             <div class="mb-3">
                 <label for="mssv" class="form-label" ></label>
-                <input type="text" class="form-control" name="id" id="mssv" aria-describedby="ghichu" placeholder = "Student ID">
-            </div>
-            <div class="mb-3">
-                <label for="rfid" class="form-label"></label>
-                <input type="text" class="form-control" name="rfid" id="rfid" aria-describedby="ghichu" placeholder="RFID">
+                <input type="text" class="form-control" name="sid" id="sid" aria-describedby="ghichu" placeholder = "Student ID">
             </div>
             <div class="mb-3">
                 <label for="hoten" class="form-label"></label>
@@ -51,11 +47,7 @@
             <table class="admin">
                 <tr>
                     <th scope="col">Student ID</th> 
-                    <td id="id_tab">  </td>   
-                </tr>
-                <tr>
-                    <th scope="col">RFID</th> 
-                    <td id="rfid_tab">  </td>   
+                    <td id="sid_tab">  </td>   
                 </tr>
                 <tr>
                     <th scope="col">Name of Student</th> 
@@ -78,10 +70,12 @@
         <table id="studentTable">
             <thead>
                 <td>ID Student</td>
-                <td>RFID</td>
                 <td>Name</td>
                 <td>Class</td>
-                <td>Check-In</td>
+                <td>W_1</td>
+                <td>W_2</td>
+                <td>W_3</td>
+
             </thead>
             <tbody id='testing'>
             </tbody>
@@ -146,13 +140,11 @@ setInterval(updateTable, 1000);
 function updateTable(){
     $.post("./php/getData.php",
     function(data){
-        var id = data[0].id;
-        var rfid = data[0].rfid;
+        var sid = data[0].sid;
         var name = data[0].name;
         var class_st = data[0].class_st;
 
-        document.getElementById("id_tab").innerHTML = id;
-        document.getElementById("rfid_tab").innerHTML = rfid;
+        document.getElementById("sid_tab").innerHTML = sid;
         document.getElementById("name_tab").innerHTML = name;
         document.getElementById("class_st_tab").innerHTML = class_st;
 
@@ -162,32 +154,14 @@ function updateTable(){
 
 setInterval(updateData, 1000);
 function updateData() {
-    if( document.getElementById("username").value == "20146_CLA"){
-    $.post("./php/20146Data.php", {}, function(res) {
-      $('#testing').empty(); // Xóa dữ liệu cũ trước khi thêm dữ liệu mới
-  
-      for (let i = 0; i < res.length; i++) {
-        $('#testing').append('<tr><td>' + res[i]['id'] + '</td><td>' + res[i]['rfid'] + '</td><td>' + res[i]['name']+ '</td><td>' + res[i]['class']+ '</td><td>' + res[i]['checkin'] + '</td></tr>');
-      }
-    }, "json");
-  }
-  else if( document.getElementById("username").value == "20143_CLA"){
-    $.post("./php/20143Data.php", {}, function(res) {
-      $('#testing').empty(); // Xóa dữ liệu cũ trước khi thêm dữ liệu mới
-  
-      for (let i = 0; i < res.length; i++) {
-        $('#testing').append('<tr><td>' + res[i]['id'] + '</td><td>' + res[i]['rfid'] + '</td><td>' + res[i]['name']+ '</td><td>' + res[i]['class']+ '</td><td>' + res[i]['checkin'] + '</td></tr>');
-      }
-    }, "json");
-  }
-  else if( document.getElementById("username").value == "lecture"){
+ if( document.getElementById("username").value == "lecture"){
     $.post("./php/showData.php", {}, function(res) {
       $('#testing').empty(); // Xóa dữ liệu cũ trước khi thêm dữ liệu mới
   
       for (let i = 0; i < res.length; i++) {
-        $('#testing').append('<tr><td>' + res[i]['id'] + '</td><td>' + res[i]['rfid'] + '</td><td>' + res[i]['name']+ '</td><td>' + res[i]['class']+ '</td><td>' + res[i]['checkin'] + '</td></tr>');
+        $('#testing').append('<tr><td>' + res[i]['sid'] + '</td><td>' + res[i]['name']+ '</td><td>' + res[i]['class'] + '</td><td>' + res[i]['W_1'] + '</td><td>' + res[i]['W_2'] + '</td><td>' + res[i]['W_3'] + '</td></tr>');
       }
-    }, "json");
+    }, "json")
   }
 }
   

@@ -1,4 +1,5 @@
 <?php
+# Connect database
 include("config.php");
 
 

@@ -69,12 +69,10 @@
         <h2>Position: Lecture</h2>
         <select id="classFilter">
             <option value="all">All</option>
-            <option value="IOT_Class">IOT Class</option>
-            <option value="DS_Class">DS Class</option>
-            <!-- Thêm các lớp khác nếu cần -->
+            <option value="IOT">IOT</option>
+            <option value="DataSience">DataSience</option>
         </select>
 
-        <!-- Thêm thanh Dashboard và chữ "Hello world" -->
         <div id="dashboardToggle">Dashboard</div>
         <div id="listStudentToggle" style="display: none;">List Student</div>
 
@@ -102,10 +100,12 @@
 
     </div>
     
-    <!-- ########################------------------------------------------------------------------############################ -->
 <script>
 
-//  Funtion for login
+//  ############################################################################################
+//  ################################### Funtion for login ######################################
+//  ############################################################################################
+
 document.getElementById("refreshButton").addEventListener("click", function() {
     event.preventDefault();
     location.reload(); // Làm trang web làm mới khi nút được nhấn
@@ -144,7 +144,9 @@ function login_funct(){
     })
 }
 
-//  Funtion for admin
+//  ############################################################################################
+//  ################################### Funtion for admin ######################################
+//  ############################################################################################
 $(document).ready(function(){
     $(document).on("submit","#form", function(){ //process event name "submit" from id "form"
 
@@ -168,6 +170,7 @@ function updateTable(){
     }
     )
 }
+
 
 //  ############################################################################################
 //  ################################### Funtion for lecture ####################################
@@ -243,21 +246,10 @@ setInterval(updateData, 1000);
 function updateData() {
  if( document.getElementById("username").value == "lecture"){
     var selectedClass = $('#classFilter').val();
-
-    // Kiểm tra giá trị của select và chọn file PHP tương ứng
-    var phpFile = "";
-    if (selectedClass == "DS_Class") {
-        phpFile = "./php/ShowDsData.php";
-    } 
-    else if(selectedClass == "IOT_Class"){
-        phpFile = "./php/ShowIotData.php";
-    }
-    else {
-        phpFile = "./php/showData.php";
-    }
+    
 
     // Gửi dữ liệu đến server
-    $.post(phpFile, {}, function(res) {
+    $.post( "./php/showData.php", { selectedClass: selectedClass }, function(res) {
       $('#testing').empty(); // Xóa dữ liệu cũ trước khi thêm dữ liệu mới
   
       for (let i = 0; i < res.length; i++) {
@@ -312,7 +304,6 @@ document.getElementById('uploadForm').addEventListener('submit', function(event)
             }
         });
 </script>
-    <!-- ########################------------------------------------------------------------------############################ -->
 
 </body>
 </html>

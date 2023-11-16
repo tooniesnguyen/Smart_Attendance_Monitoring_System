@@ -1,4 +1,6 @@
 <?php
+header('Content-Type: application/json');
+
 # Kết nối cơ sở dữ liệu
 include("config.php");
 

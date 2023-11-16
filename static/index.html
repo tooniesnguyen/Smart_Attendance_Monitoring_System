@@ -141,7 +141,6 @@ function login_funct(){
             }
         }
     }
-    document.getElementById("inforclass").innerText =  "Class: " + username;
     })
 }
 
@@ -165,7 +164,7 @@ function updateTable(){
         document.getElementById("sid_tab").innerHTML = sid;
         document.getElementById("name_tab").innerHTML = name;
         document.getElementById("class_st_tab").innerHTML = class_st;
-
+        
     }
     )
 }
@@ -174,32 +173,48 @@ function updateTable(){
 //  ################################### Funtion for lecture ####################################
 //  ############################################################################################
 
+function updateChart() {
+  // Sử dụng Ajax để lấy dữ liệu từ file chart.php
+  $.ajax({
+    url: './php/chart.php',
+    type: 'GET',
+    dataType: 'json',
+    success: function(data) {
+      // Cập nhật giá trị của biểu đồ với dữ liệu mới
+      myChart.data.datasets[0].data = [data[0].on_time,data[0].late,data[0].absent];
+      myChart.update(); // Cập nhật biểu đồ
+      console.log(data[0])
+    },
+    error: function(error) {
+      console.log('Error fetching data:', error);
+    }
+  });
+}
+
+// Khởi tạo biểu đồ ban đầu
 const data = {
-  labels: [
-    'Red',
-    'Blue',
-    'Yellow'
-  ],
+  labels: ['on_time', 'late', 'absent'],
   datasets: [{
     label: 'My First Dataset',
-    data: [300, 50, 100],
-    backgroundColor: [
-      'rgb(255, 99, 132)',
-      'rgb(54, 162, 235)',
-      'rgb(255, 205, 86)'
-    ],
+    data: [3, 5, 10],
+    backgroundColor: ['rgb(255, 99, 132)', 'rgb(54, 162, 235)', 'rgb(255, 205, 86)'],
     hoverOffset: 4
   }]
 };
+
 const config = {
   type: 'doughnut',
   data: data,
   options: {radius: '60%'}
 };
-var myChart = new Chart(
-            document.getElementById('dashboard'),
-            config
-        );
+
+var myChart = new Chart(document.getElementById('dashboard'), config);
+
+// Cập nhật biểu đồ mỗi giây (hoặc thời gian mong muốn)
+setInterval(updateChart, 1000);
+
+
+
 
 
 $(document).ready(function(){

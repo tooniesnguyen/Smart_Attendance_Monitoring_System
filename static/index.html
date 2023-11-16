@@ -16,9 +16,6 @@
         <input type="text" id="username" placeholder="username">
         <input type="password" id="password" placeholder="password">
         <button onclick="login_funct()">Login</button>
-
-
-
     </div>
     
 
@@ -109,7 +106,7 @@ document.getElementById("refreshButton_Lecture").addEventListener("click", funct
 });
 
 function login_funct(){
-    $.post("readData.php", function(data){
+    $.post("./php/readData.php", function(data){
     var username = document.getElementById("username").value;
     var password = document.getElementById("password").value;
 
@@ -140,14 +137,14 @@ function login_funct(){
 $(document).ready(function(){
     $(document).on("submit","#form", function(){ //process event name "submit" from id "form"
 
-        $.post("addData.php",$('#form').serialize(), function(){alert("data sent")}   );
+        $.post("./php/addData.php",$('#form').serialize(), function(){alert("data sent")}   );
         return false; // to prevent the web from reloading
     });
     updateTable();
 });
 setInterval(updateTable, 1000);
 function updateTable(){
-    $.post("getData.php",
+    $.post("./php/getData.php",
     function(data){
         var id = data[0].id;
         var rfid = data[0].rfid;
@@ -166,7 +163,7 @@ function updateTable(){
 setInterval(updateData, 1000);
 function updateData() {
     if( document.getElementById("username").value == "20146_CLA"){
-    $.post("20146Data.php", {}, function(res) {
+    $.post("./php/20146Data.php", {}, function(res) {
       $('#testing').empty(); // Xóa dữ liệu cũ trước khi thêm dữ liệu mới
   
       for (let i = 0; i < res.length; i++) {
@@ -175,7 +172,7 @@ function updateData() {
     }, "json");
   }
   else if( document.getElementById("username").value == "20143_CLA"){
-    $.post("20143Data.php", {}, function(res) {
+    $.post("./php/20143Data.php", {}, function(res) {
       $('#testing').empty(); // Xóa dữ liệu cũ trước khi thêm dữ liệu mới
   
       for (let i = 0; i < res.length; i++) {
@@ -184,7 +181,7 @@ function updateData() {
     }, "json");
   }
   else if( document.getElementById("username").value == "lecture"){
-    $.post("showData.php", {}, function(res) {
+    $.post("./php/showData.php", {}, function(res) {
       $('#testing').empty(); // Xóa dữ liệu cũ trước khi thêm dữ liệu mới
   
       for (let i = 0; i < res.length; i++) {
@@ -223,7 +220,7 @@ document.getElementById('uploadForm').addEventListener('submit', function(event)
                 formData.append('csvFile', file);
 
                 // Gửi file đến server
-                fetch('handle_csv.php', {
+                fetch('./php/handle_csv.php', {
                     method: 'POST',
                     body: formData
                 })

@@ -106,22 +106,30 @@ body {
 }
 
 .lecture{
-    width: 80%;
-    height: 50%;
-    border: 1px solid #444; /* Viền dark */
-    border-radius: 10px;
+    width: 100%;
+    height: 80%;
+    border: 10% solid #444; /* Viền dark */
+    border-radius: 2%;
     text-align: center;
     background-color: #333;
+    box-sizing: border-box;
 }
 
 .lecture table{
     border-collapse: collapse;
     width: 100%;
+    height: 70%;
     color: #0f8f0f;
     font-family: monospace;
     font-size: 13px;
     text-align: center;
 
+}
+
+.lecture #border-container {
+    border: 1% solid #521e1e; /* Set your desired border style and color */
+    padding: 10%; /* Set padding to create some space between the content and the border */
+    width:  100%;
 }
 
 .lecture #container{
@@ -137,6 +145,20 @@ body {
     margin-bottom: 10px;
     border-radius: 5px;
 
+}
+
+.lecture  #studentTable {
+    width: 100%;
+    height: 300px; /* Set your desired fixed height */
+    display: block; /* Enable block-level display to constrain height */
+}
+
+.lecture #testing{
+
+    width: 100%;
+    height: 300px;
+    overflow-y: auto;
+    display: block;
 }
 
 .lecture tr{

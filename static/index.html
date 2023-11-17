@@ -70,7 +70,7 @@
         <select id="classFilter">
             <option value="all">All</option>
             <option value="IOT">IOT</option>
-            <option value="DataSience">DataSience</option>
+            <option value="Embedded">Embedded</option>
         </select>
 
         <select id="weekFilter">
@@ -91,8 +91,11 @@
             <option value=14>Week 14</option>
             <option value=15>Week 15</option>
         </select>
-        <div id="dashboardToggle">Dashboard</div>
-        <div id="listStudentToggle" style="display: none;">List Student</div>
+
+        <div id="container">
+            <div id="dashboardToggle">Dashboard</div>
+            <div id="listStudentToggle" style="display: none;">List Student</div>
+        </div>
 
         <div style="width:50%">
         <canvas id="dashboard" style="display: none;" ></canvas>
@@ -103,21 +106,21 @@
                 <td>ID Student</td>
                 <td width = 10%>Name</td>
                 <td>Class</td>
-                <td>W_1</td>
-                <td>W_2</td>
-                <td>W_3</td>
-                <td>W_4</td>
-                <td>W_5</td>
-                <td>W_6</td>
-                <td>W_7</td>
-                <td>W_8</td>
-                <td>W_9</td>
-                <td>W_10</td>
-                <td>W_11</td>
-                <td>W_12</td>
-                <td>W_13</td>
-                <td>W_14</td>
-                <td>W_15</td>
+                <td>Week 1</td>
+                <td>Week 2</td>
+                <td>Week 3</td>
+                <td>Week 4</td>
+                <td>Week 5</td>
+                <td>Week 6</td>
+                <td>Week 7</td>
+                <td>Week 8</td>
+                <td>Week 9</td>
+                <td>Week 10</td>
+                <td>Week 11</td>
+                <td>Week 12</td>
+                <td>Week 13</td>
+                <td>Week 14</td>
+                <td>Week 15</td>
             </thead>
             <tbody id='testing'>
             </tbody>
@@ -190,7 +193,7 @@ function updateTable(){
     function(data){
         var sid = data[0].sid;
         var name = data[0].name;
-        var class_st = data[0].class_st;
+        var class_st = data[0].class;
 
         document.getElementById("sid_tab").innerHTML = sid;
         document.getElementById("name_tab").innerHTML = name;

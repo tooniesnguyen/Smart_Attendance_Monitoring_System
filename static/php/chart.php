@@ -1,16 +1,21 @@
 <?php
 header('Content-Type: application/json');
+$selectedClass = $_POST['selectedClass'];
 
 # Kết nối cơ sở dữ liệu
 include("config.php");
+
+
+
 
 $temparray = array(
     "on_time" => 0,
     "late" => 0,
     "absent" => 0
 );
+if($selectedClass == "all"){$sqlselect = "SELECT * FROM class ";}
+else{$sqlselect = "SELECT * FROM class where class = '$selectedClass'";}
 
-$sqlselect = "SELECT * FROM class";
 $result = $conn->query($sqlselect);
 
 if ($result->num_rows > 0){

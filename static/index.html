@@ -72,7 +72,12 @@
             <option value="IOT">IOT</option>
             <option value="DataSience">DataSience</option>
         </select>
-
+        
+        <select id="weekFilter">
+            <option value="all">All</option>
+            <option value="w_1">Week 1</option>
+            <option value="w_2">Week 2</option>
+        </select>
         <div id="dashboardToggle">Dashboard</div>
         <div id="listStudentToggle" style="display: none;">List Student</div>
 
@@ -178,10 +183,12 @@ function updateTable(){
 
 function updateChart() {
   // Sử dụng Ajax để lấy dữ liệu từ file chart.php
+  var selectedClass = $('#classFilter').val();
   $.ajax({
     url: './php/chart.php',
-    type: 'GET',
+    type: 'POST',
     dataType: 'json',
+    data: { selectedClass: selectedClass },
     success: function(data) {
       // Cập nhật giá trị của biểu đồ với dữ liệu mới
       myChart.data.datasets[0].data = [data[0].on_time,data[0].late,data[0].absent];

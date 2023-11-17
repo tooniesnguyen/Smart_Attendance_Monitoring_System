@@ -69,6 +69,7 @@
         <h2>Position: Lecture</h2>
         <select id="classFilter">
             <option value="all">All</option>
+            <option value="AI">AI</option>
             <option value="IOT">IOT</option>
             <option value="Embedded">Embedded</option>
         </select>
@@ -97,8 +98,10 @@
             <div id="listStudentToggle" style="display: none;">List Student</div>
         </div>
 
-        <div style="width:50%">
-        <canvas id="dashboard" style="display: none;" ></canvas>
+        <div style="width:50%; display: flex;">
+        <canvas id="dashboard" style="width:50%; display: inline-block;" ></canvas>
+        <canvas id="dashboard_2" style="width:50%; display: inline-block;" ></canvas>
+
         </div>
 
         <table id="studentTable">
@@ -221,7 +224,6 @@ function updateChart() {
       // Cập nhật giá trị của biểu đồ với dữ liệu mới
       myChart.data.datasets[0].data = [data[0].on_time,data[0].late,data[0].absent];
       myChart.update(); // Cập nhật biểu đồ
-      console.log(data[0])
     },
     error: function(error) {
       console.log('Error fetching data:', error);
@@ -247,22 +249,94 @@ const config = {
 };
 
 var myChart = new Chart(document.getElementById('dashboard'), config);
-
-// Cập nhật biểu đồ mỗi giây (hoặc thời gian mong muốn)
 setInterval(updateChart, 1000);
+// ################################################################################# //
+function updateChart_2(){
+    var selectedClass = $('#classFilter').val();
+    $.ajax({
+    url: './php/mix_chart.php',
+    type: 'POST',
+    dataType: 'json',
+    data: { selectedClass: selectedClass },
+    success: function(data) {
+      // Cập nhật giá trị của biểu đồ với dữ liệu mới
+      
+      myChart2.data.datasets[0].data = [data[0].W_1, data[0].W_2, data[0].W_3, data[0].W_4, data[0].W_5, data[0].W_6, data[0].W_7,//
+       data[0].W_8, data[0].W_9, data[0].W_10, data[0].W_11, data[0].W_12, data[0].W_13, data[0].W_14, data[0].W_15];
+      myChart2.data.datasets[1].data = [data[0].W_1, data[0].W_2, data[0].W_3, data[0].W_4, data[0].W_5, data[0].W_6, data[0].W_7,//
+       data[0].W_8, data[0].W_9, data[0].W_10, data[0].W_11, data[0].W_12, data[0].W_13, data[0].W_14, data[0].W_15];
+
+      myChart2.update(); // Cập nhật biểu đồ
+    },
+    error: function(error) {
+      console.log('Error fetching data:', error);
+    }
+  });
 
 
+}
 
 
+const data_2 = {
+  labels: [
+    'Week 1',
+    'Week 2',
+    'Week 3',
+    'Week 4',
+    'Week 5',
+    'Week 6',
+    'Week 7',
+    'Week 8',
+    'Week 9',
+    'Week 10',
+    'Week 11',
+    'Week 12',
+    'Week 13',
+    'Week 14',
+    'Week 15',  
+],
+  datasets: [{
+    type: 'bar',
+    label: 'Bar Dataset',
+    data: [10, 20, 30, 40, 20, 10, 20, 50, 40, 20, 30, 20, 10, 40, 20],
+    borderColor: 'rgb(255, 99, 132)',
+    backgroundColor: 'rgba(255, 99, 132, 0.2)'
+  }, {
+    type: 'line',
+    label: 'Line Dataset',
+    data: [10, 20, 30, 40, 20, 10, 20, 50, 40, 20, 30, 20, 10, 40, 20],
+    fill: false,
+    borderColor: 'rgb(54, 162, 235)'
+  }]
+};
+
+const config_2 = {
+  type: 'scatter',
+  data: data_2,
+  options: {
+    scales: {
+      y: {
+        beginAtZero: true
+      }
+    }
+  }
+};
+var myChart2 = new Chart(document.getElementById('dashboard_2'), config_2);
+setInterval(updateChart_2, 1000);
+// ################################################################################# //
 
 $(document).ready(function(){
     // Thêm sự kiện click cho thanh Dashboard
+    $("#dashboard").hide();
+    $("#dashboard_2").hide();
+
     $("#dashboardToggle").click(function() {
         // Ẩn/hiện table
         $("#studentTable").toggle();
         
         // Ẩn/hiện chữ "Hello world"
         $("#dashboard").toggle();
+        $("#dashboard_2").toggle();
         $("#dashboardToggle").toggle();
         $("#listStudentToggle").toggle();
     });
@@ -271,6 +345,7 @@ $(document).ready(function(){
         $("#studentTable").toggle();
         
         $("#dashboard").toggle();
+        $("#dashboard_2").toggle();
         $("#dashboardToggle").toggle();
         $("#listStudentToggle").toggle();
     });

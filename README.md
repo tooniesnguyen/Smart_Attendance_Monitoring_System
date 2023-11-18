@@ -51,7 +51,7 @@ $ server.py
 http://127.0.0.1/
 
 
-## My database: [IOT_Face.sql](./database/IOT_Face.sql)
+## My table of database: [IOT_Face.sql](./database/IOT_Face.sql)
 ```
 +----+----------+----------------------+----------+-------+-------+-------+-------+-------+------+------+-------+-------+------+------+------+------+------+------+
 | id | sid      | name                 | class    | W_1   | W_2   | W_3   | W_4   | W_5   | W_6  | W_7  | W_8   | W_9   | W_10 | W_11 | W_12 | W_13 | W_14 | W_15 |

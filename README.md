@@ -2,7 +2,17 @@
 
 ![image](./images/pipeline.jpg)
 
-### My database
+## To do task
+- [x] Doughnut chart
+- [x] Mixed chart
+- [x] Show student list attendance
+- [x] Filter: Class, Week, Time
+- [x] Change text color according to attendance time status
+- [x] Manual registration
+- [x] Convert csv file to database (SQL)
+- [x] Displays the latest importer information
+
+## My database: [IOT_Face.sql](./database/IOT_Face.sql)
 ```
 +----+----------+----------------------+----------+-------+-------+-------+-------+-------+------+------+-------+-------+------+------+------+------+------+------+
 | id | sid      | name                 | class    | W_1   | W_2   | W_3   | W_4   | W_5   | W_6  | W_7  | W_8   | W_9   | W_10 | W_11 | W_12 | W_13 | W_14 | W_15 |
@@ -24,3 +34,14 @@
 +----+----------+----------------------+----------+-------+-------+-------+-------+-------+------+------+-------+-------+------+------+------+------+------+------+
 ```
 
+## Result
+
+### GUI Login
+![image](./images/login.jpg)
+
+
+### GUI Lecture
+![image](./images/lecture_login.jpg)
+
+### GUI Admin
+![image](./images/admin_login.jpg)

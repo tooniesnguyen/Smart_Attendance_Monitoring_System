@@ -20,29 +20,30 @@ while True:
 #         thang = now.month
 #         gio = now.hour
 #         phut = now.minute
-        clockin = now.strftime("%H:%M %m-%d")
+        clockin = now.strftime("%H:%M")
         # Create a socket object
         client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
         # Get the server's hostname and port
-        host = "192.168.137.204"
-        port = 12353
+        host = "192.168.211.11"
+        port = 12354
 
         # Connect to the server
         client_socket.connect((host, port))
 
         # Send data to the server
-        data_to_send = str(rfid)+","+str(clockin)
+        data_to_send = str(text)+","+str(clockin)+","+"IOT"
         client_socket.send(data_to_send.encode())
         # Receive the server's response
         response = client_socket.recv(1024)
         feedback=response.decode()
+        print(data_to_send)
         print('Server response:', feedback)
         sleep(1)
         if (feedback=="ok"):
             GPIO.output(led, GPIO.HIGH)
             print("welcome")
-            sleep(1)
+            sleep(2)
         # Close the connection
         client_socket.close()
     finally:

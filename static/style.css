@@ -194,6 +194,7 @@ body {
     border: 1px solid #ccc;
     padding: 10px;
     width: 200px; /* Thay đổi kích thước tùy thuộc vào nhu cầu của bạn */
+    
   }
 
 .lecture td{
@@ -246,6 +247,7 @@ body {
     color: antiquewhite;
     font-family: sans-serif;
     text-align:left;
+    padding-left: 5%;
 }
 .lecture button {
     width: 100px;
@@ -266,3 +268,6 @@ body {
     background-color: #15410d; /* Màu nền dark khi hover */
 
 }
+.pink-background {
+    background-color: pink;
+  }

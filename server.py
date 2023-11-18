@@ -5,8 +5,8 @@ from utils.addData import addData
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 # Get the local machine name and port
-host = "192.168.137.204"
-port = 12353
+host = "192.168.211.11"
+port = 12354
 
 # Bind to the port
 server_socket.bind((host, port))
@@ -24,9 +24,10 @@ while True:
     # print("Data", data[1:])
     rfid = data.decode().split(",")[0]
     checkin = data.decode().split(",")[1]
+    class_id =  data.decode().split(",")[2]
     print(rfid)
     print("Check", checkin)
-    status = addData(rfid=rfid, checkin= checkin)
+    status = addData(rfid=rfid, checkin= checkin, class_id= class_id)
     if status == "ok":
         print('RFID:', rfid)
         print('Checkin:', checkin)

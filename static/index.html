@@ -411,9 +411,10 @@ function updateData() {
     // Gửi dữ liệu đến server
     $.post( "./php/showData.php", { selectedClass: selectedClass }, function(res) {
       $('#testing').empty(); // Xóa dữ liệu cũ trước khi thêm dữ liệu mới
-  
+      
       for (let i = 0; i < res.length; i++) {
-        $('#testing').append('<tr><td>' + res[i]['sid'] + '</td><td>' + res[i]['name']+ '</td><td>' + res[i]['class'] + '</td><td>' + res[i]['W_1'] + '</td><td>' + res[i]['W_2'] + '</td><td>' + res[i]['W_3'] + '</td><td>' + res[i]['W_4'] + '</td><td>' + res[i]['W_5'] +'</td><td>' + res[i]['W_6'] +'</td><td>' + res[i]['W_7'] +'</td><td>' + res[i]['W_8'] +'</td><td>' + res[i]['W_9'] +'</td><td>' + res[i]['W_10'] +'</td><td>' + res[i]['W_11'] +'</td><td>' + res[i]['W_12'] +'</td><td>' + res[i]['W_13'] +'</td><td>' + res[i]['W_14'] +'</td><td>' + res[i]['W_15'] +'</td></tr>');
+        var colorClass = (res[i]['W_1'] < '14:20') ? 'pink-background' : '';
+        $('#testing').append('<tr><td>' + res[i]['sid'] + '</td><td>' + res[i]['name'] + '</td><td>' + res[i]['class'] + '</td><td class="' + colorClass + '">' + res[i]['W_1'] + '</td><td>' + res[i]['W_2'] + '</td><td>' + res[i]['W_3'] + '</td><td>' + res[i]['W_4'] + '</td><td>' + res[i]['W_5'] + '</td><td>' + res[i]['W_6'] + '</td><td>' + res[i]['W_7'] + '</td><td>' + res[i]['W_8'] + '</td><td>' + res[i]['W_9'] + '</td><td>' + res[i]['W_10'] + '</td><td>' + res[i]['W_11'] + '</td><td>' + res[i]['W_12'] + '</td><td>' + res[i]['W_13'] + '</td><td>' + res[i]['W_14'] + '</td><td>' + res[i]['W_15'] + '</td></tr>');
       }
     }, "json")
   }

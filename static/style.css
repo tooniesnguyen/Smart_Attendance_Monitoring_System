@@ -51,7 +51,6 @@ body {
     background-color: #15410d; /* Màu nền dark khi hover */
 }
 
-
 .admin{
     width: 600px;
     height: 500px;
@@ -63,9 +62,66 @@ body {
 
 
 .admin h2 {
-    color: rgb(59, 155, 32);
+    color: rgb(255, 255, 130);
     font-family: sans-serif;
     text-align:left;
+}
+.admin h3 {
+    color: rgb(255, 255, 130);
+    font-family: sans-serif;
+    text-align:center;
+}
+
+.admin form {
+    margin-bottom: 30px;
+}
+.admin label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+
+
+
+
+
+
+
+#uploadForm {
+    display: flex;
+    flex-direction: row; /* Đặt chiều sắp xếp thành hàng ngang */
+    justify-content: space-between;
+    align-items: center;
+    height: 20px;
+}
+
+#uploadForm .button-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 200px; /* Có thể điều chỉnh khoảng cách giữa hai nút */
+}
+
+#uploadForm .custom-file-label {
+    width: 200px;
+    height: 40px;
+    cursor: pointer;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    background-color: #fff871;
+    color: #000000;
+    margin-bottom: 10px;
+    padding-top: 6%;
+}
+#uploadForm input[type="file"] {
+    display:none;
+}
+
+#uploadForm input[type="submit"] {
+    background-color: #fff871;
+    color: #000000;
+    border: 1px solid #000000;
 }
 
 .admin input {
@@ -78,6 +134,11 @@ body {
     box-sizing: border-box;
     background-color: #444; /* Màu nền dark cho input */
     color: white; /* Màu chữ trắng */
+}
+
+.admin input:hover {
+    font-size: 15px;
+    background-color: #30392e; /* Màu nền dark khi input */
 }
 .admin button {
     width: 200px;
@@ -98,12 +159,13 @@ body {
     padding-left: 20px;
     box-sizing: border-box;
     background-color: #444; /* Màu nền dark cho input */
-    color: white;
+    color: #fff871;
 }
 .admin button:hover {
     font-size: 15px;
     background-color: #15410d; /* Màu nền dark khi hover */
 }
+
 
 .lecture{
     width: 100%;
@@ -126,10 +188,16 @@ body {
 
 }
 
-.lecture #border-container {
-    border: 1% solid #521e1e; /* Set your desired border style and color */
-    padding: 10%; /* Set padding to create some space between the content and the border */
-    width:  100%;
+.border-container{
+    border: 1px solid #444; /* Viền dark */
+    border-radius: 10px;
+    text-align: center;
+    background-color: #333;
+
+    width: 90%;
+    height: 90%;
+    background-color: #333;
+
 }
 
 .lecture #container{

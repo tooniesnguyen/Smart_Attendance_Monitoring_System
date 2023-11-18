@@ -25,9 +25,14 @@
         <h3>Update student information</h3>
         <br>
         <form id="uploadForm" enctype="multipart/form-data">
-            <input type="file" id="csvFile" accept=".csv" />
-            <input type="submit" value="Update CSV" />
-        </form>
+                    <div class="button-group">
+                        <label for="csvFile" class="custom-file-label">Chọn File CSV</label>
+                        <input type="file" id="csvFile" accept=".csv" />
+                    </div>
+                    <div class="button-group">
+                        <input type="submit" value="Update CSV" />
+                    </div>
+                </form>
         <form action="" id="form">
             <div class="mb-3">
                 <label for="mssv" class="form-label" ></label>

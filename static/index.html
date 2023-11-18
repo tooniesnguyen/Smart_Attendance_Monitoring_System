@@ -364,7 +364,7 @@ const config_2 = {
     plugins: {
       legend: {
         labels: {
-          color: 'gold' // Replace 'your-desired-color' with the color you want for label text
+          color: 'gold' 
         }
       }
     }
@@ -412,7 +412,7 @@ function updateData() {
       $('#testing').empty(); // Xóa dữ liệu cũ trước khi thêm dữ liệu mới
       
       function applyBackgroundColor(value) {
-    if (value < clock_value) {
+    if (value <= clock_value) {
       return 'pink-background';
     } else if (value > clock_value) {
       return 'blue-background';

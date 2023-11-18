@@ -269,5 +269,12 @@ body {
 
 }
 .pink-background {
-    background-color: pink;
+    color: rgb(255, 99, 132);
   }
+.blue-background {
+    color: rgb(54, 162, 235);
+}
+
+.yellow-background {
+    color: #fbff00;
+}

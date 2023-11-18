@@ -338,7 +338,7 @@ const data_2 = {
     label: 'Attendant',
     data: [10, 20, 30, 40, 20, 10, 20, 50, 40, 20, 30, 20, 10, 40, 20],
     borderColor: 'rgb(255, 99, 132)',
-    backgroundColor: 'rgba(255, 99, 132, 0.2)'
+    backgroundColor: 'rgba(255, 99, 132, 0.4)'
   }, {
     type: 'line',
     label: 'Line Attendant',
@@ -355,7 +355,6 @@ const config_2 = {
     scales: {
       y: {
         suggestedMin: 0, // Set the minimum value for the y-axis
-        suggestedMax: 15, // Set the maximum value for the y-axis
         color: 'white' // Adjust the text color of the x-axis labels
       },
       x: {
@@ -412,10 +411,36 @@ function updateData() {
     $.post( "./php/showData.php", { selectedClass: selectedClass }, function(res) {
       $('#testing').empty(); // Xóa dữ liệu cũ trước khi thêm dữ liệu mới
       
-      for (let i = 0; i < res.length; i++) {
-        var colorClass = (res[i]['W_1'] < '14:20') ? 'pink-background' : '';
-        $('#testing').append('<tr><td>' + res[i]['sid'] + '</td><td>' + res[i]['name'] + '</td><td>' + res[i]['class'] + '</td><td class="' + colorClass + '">' + res[i]['W_1'] + '</td><td>' + res[i]['W_2'] + '</td><td>' + res[i]['W_3'] + '</td><td>' + res[i]['W_4'] + '</td><td>' + res[i]['W_5'] + '</td><td>' + res[i]['W_6'] + '</td><td>' + res[i]['W_7'] + '</td><td>' + res[i]['W_8'] + '</td><td>' + res[i]['W_9'] + '</td><td>' + res[i]['W_10'] + '</td><td>' + res[i]['W_11'] + '</td><td>' + res[i]['W_12'] + '</td><td>' + res[i]['W_13'] + '</td><td>' + res[i]['W_14'] + '</td><td>' + res[i]['W_15'] + '</td></tr>');
-      }
+      function applyBackgroundColor(value) {
+    if (value < clock_value) {
+      return 'pink-background';
+    } else if (value > clock_value) {
+      return 'blue-background';
+    } else {
+      return 'yellow-background';
+    }
+  }
+
+  // Append rows to the table
+  for (var i = 0; i < res.length; i++) {
+    $('#testing').append('<tr><td>' + res[i]['sid'] + '</td><td>' + res[i]['name'] + '</td><td>' + res[i]['class'] + '</td>' +
+      '<td class="' + applyBackgroundColor(res[i]['W_1']) + '">' + res[i]['W_1'] + '</td>' +
+      '<td class="' + applyBackgroundColor(res[i]['W_2']) + '">' + res[i]['W_2'] + '</td>' +
+      '<td class="' + applyBackgroundColor(res[i]['W_3']) + '">' + res[i]['W_3'] + '</td>' +
+      '<td class="' + applyBackgroundColor(res[i]['W_4']) + '">' + res[i]['W_4'] + '</td>' +
+      '<td class="' + applyBackgroundColor(res[i]['W_5']) + '">' + res[i]['W_5'] + '</td>' +
+      '<td class="' + applyBackgroundColor(res[i]['W_6']) + '">' + res[i]['W_6'] + '</td>' +
+      '<td class="' + applyBackgroundColor(res[i]['W_7']) + '">' + res[i]['W_7'] + '</td>' +
+      '<td class="' + applyBackgroundColor(res[i]['W_8']) + '">' + res[i]['W_8'] + '</td>' +
+      '<td class="' + applyBackgroundColor(res[i]['W_9']) + '">' + res[i]['W_9'] + '</td>' +
+      '<td class="' + applyBackgroundColor(res[i]['W_10']) + '">' + res[i]['W_10'] + '</td>' +
+      '<td class="' + applyBackgroundColor(res[i]['W_11']) + '">' + res[i]['W_11'] + '</td>' +
+      '<td class="' + applyBackgroundColor(res[i]['W_12']) + '">' + res[i]['W_12'] + '</td>' +
+      '<td class="' + applyBackgroundColor(res[i]['W_13']) + '">' + res[i]['W_13'] + '</td>' +
+      '<td class="' + applyBackgroundColor(res[i]['W_14']) + '">' + res[i]['W_14'] + '</td>' +
+      '<td class="' + applyBackgroundColor(res[i]['W_15']) + '">' + res[i]['W_15'] + '</td>' +
+      '</tr>');
+  }
     }, "json")
   }
 }

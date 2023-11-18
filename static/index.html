@@ -105,9 +105,13 @@
             <div id="listStudentToggle" style="display: none;">List Student</div>
         </div>
 
-        <div style="width:50%; display: flex;">
-        <canvas id="dashboard" style="width:50%; display: inline-block;" ></canvas>
-        <canvas id="dashboard_2" style="width:50%; display: inline-block;" ></canvas>
+        <div style="width:100%; display: flex;">
+        <div id="dashboardContainer" style="display: inline-block;">
+            <canvas id="dashboard"></canvas>
+        </div>
+        <div id="dashboard_2Container" style="display: inline-block;">
+            <canvas id="dashboard_2"></canvas>
+        </div>
 
         </div>
 
@@ -258,7 +262,7 @@ function updateChart() {
 
 // Khởi tạo biểu đồ ban đầu
 const data = {
-  labels: ['on_time', 'late', 'absent'],
+  labels: ['in time', 'late', 'absent'],
   datasets: [{
     label: 'My First Dataset',
     data: [3, 5, 10],
@@ -270,7 +274,16 @@ const data = {
 const config = {
   type: 'doughnut',
   data: data,
-  options: {radius: '60%'}
+  options: {
+    radius: '100%',
+    plugins: {
+      legend: {
+        labels: {
+          color: 'gold' // Replace 'your-desired-color' with the color you want for label text
+        }
+      }
+    }
+}
 };
 
 var myChart = new Chart(document.getElementById('dashboard'), config);
@@ -322,13 +335,13 @@ const data_2 = {
 ],
   datasets: [{
     type: 'bar',
-    label: 'Bar Dataset',
+    label: 'Attendant',
     data: [10, 20, 30, 40, 20, 10, 20, 50, 40, 20, 30, 20, 10, 40, 20],
     borderColor: 'rgb(255, 99, 132)',
     backgroundColor: 'rgba(255, 99, 132, 0.2)'
   }, {
     type: 'line',
-    label: 'Line Dataset',
+    label: 'Line Attendant',
     data: [10, 20, 30, 40, 20, 10, 20, 50, 40, 20, 30, 20, 10, 40, 20],
     fill: false,
     borderColor: 'rgb(54, 162, 235)'
@@ -336,13 +349,24 @@ const data_2 = {
 };
 
 const config_2 = {
-  type: 'scatter',
+  type: 'bar',
   data: data_2,
   options: {
     scales: {
       y: {
         suggestedMin: 0, // Set the minimum value for the y-axis
         suggestedMax: 15, // Set the maximum value for the y-axis
+        color: 'white' // Adjust the text color of the x-axis labels
+      },
+      x: {
+        color: 'white' // Adjust the text color of the x-axis labels
+      }
+    },
+    plugins: {
+      legend: {
+        labels: {
+          color: 'gold' // Replace 'your-desired-color' with the color you want for label text
+        }
       }
     }
   }

@@ -181,7 +181,7 @@ body {
     border-collapse: collapse;
     width: 100%;
     height: 70%;
-    color: #0f8f0f;
+    color: #fbff00;
     font-family: monospace;
     font-size: 13px;
     text-align: center;
@@ -204,17 +204,33 @@ body {
     border-radius: 5px;
 
 }
+.lecture #dashboardContainer {
+    display: none;
+    width: 50%;
+    height: 50%; /* Adjust the height as needed */
+    /* border: 1px solid #ccc; Optional: Add a border for better visibility */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    float: left; /* Float the container to the left */
+    padding-left: 10%;
+}
 
+.lecture #dashboard_2Container {
+    width: 60%;
+    height: 60%; /* Adjust the height as needed */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    float: right; /* Float the container to the left */
+    padding-right: 10%;
+}
 .lecture  #studentTable {
     width: 100%;
-    height: 300px; /* Set your desired fixed height */
+    height: 60%; /* Set your desired fixed height */
     display: block; /* Enable block-level display to constrain height */
 }
 
 .lecture #testing{
 
-    width: 100%;
-    height: 300px;
+    width: 101%;
+    height: 100%;
     overflow-y: auto;
     display: block;
 }
@@ -240,6 +256,10 @@ body {
     background-color: #287415; /* Màu nền dark cho button */
     color: antiquewhite;
     transition: background-color 0.3s;
+    position: fixed;
+    bottom: 20%;
+    left: 50%; /* This centers the button horizontally, adjust as needed */
+    transform: translateX(-50%); /* Center the button using a transform */
 }
 .lecture button:hover {
     font-size: 15px;

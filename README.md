@@ -80,8 +80,8 @@ http://127.0.0.1/
 
 
 ### GUI Lecture
-![image](./images/lecture1.jpg)
 ![image](./images/lecture2.jpg)
+![image](./images/lecture1.jpg)
 
 ### GUI Admin
 ![image](./images/admin_login.jpg)

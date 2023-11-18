@@ -69,8 +69,8 @@
         
     </div>
 
-    <div class="border-container">
     <div class="lecture" style="display: none;">
+
         <h2>Position: Lecture</h2>
         <select id="classFilter">
             <option value="all">All</option>
@@ -98,6 +98,8 @@
             <option value=15>Week 15</option>
         </select>
 
+        <input type="time" id="appt" name="appt" min="00:00" max="24:00" required />
+        
         <div id="container">
             <div id="dashboardToggle">Dashboard</div>
             <div id="listStudentToggle" style="display: none;">List Student</div>
@@ -138,7 +140,6 @@
 
     <button id="refreshButton_Lecture">LogOut</button>
 
-    </div>
     </div>
     
 <script>
@@ -188,6 +189,24 @@ function login_funct(){
 //  ############################################################################################
 //  ################################### Funtion for admin ######################################
 //  ############################################################################################
+
+
+var clock_value = '07:00';
+var apptInput = document.getElementById('appt');
+
+
+// Đặt giá trị mặc định là 07:00
+apptInput.value = clock_value;
+
+// Thêm sự kiện 'input' để theo dõi thay đổi giá trị
+apptInput.addEventListener('input', function() {
+    // Lấy giá trị mới của trường input
+    clock_value = apptInput.value;
+
+    // Hiển thị giá trị trong console (bạn có thể thay đổi thành xử lý khác)
+    console.log('Giá trị mới:', clock_value);
+});
+
 $(document).ready(function(){
     $(document).on("submit","#form", function(){ //process event name "submit" from id "form"
 
@@ -225,7 +244,7 @@ function updateChart() {
     url: './php/chart.php',
     type: 'POST',
     dataType: 'json',
-    data: { selectedClass: selectedClass, selectedWeek: selectedWeek },
+    data: { selectedClass: selectedClass, selectedWeek: selectedWeek, clock_value: clock_value},
     success: function(data) {
       // Cập nhật giá trị của biểu đồ với dữ liệu mới
       myChart.data.datasets[0].data = [data[0].on_time,data[0].late,data[0].absent];
@@ -322,7 +341,8 @@ const config_2 = {
   options: {
     scales: {
       y: {
-        beginAtZero: true
+        suggestedMin: 0, // Set the minimum value for the y-axis
+        suggestedMax: 15, // Set the maximum value for the y-axis
       }
     }
   }

@@ -1,5 +1,6 @@
 <?php
 header('Content-Type: application/json');
+$clock_value = $_POST['clock_value'];
 $selectedClass = $_POST['selectedClass'];
 $selectedWeek = $_POST['selectedWeek'];
 # Kết nối cơ sở dữ liệu
@@ -28,9 +29,9 @@ if ($result->num_rows > 0){
         $time_column = $row[$column];
 
         // Kiểm tra giờ và thực hiện tính toán
-        if (!is_null($time_column) && $time_column <= '14:20'){
+        if (!is_null($time_column) && $time_column <= $clock_value){
             $temparray['on_time'] += 1;
-        } elseif ($time_column > '14:20') {
+        } elseif ($time_column > $clock_value) {
             $temparray['late'] += 1;
         } else {
             $temparray['absent'] += 1;

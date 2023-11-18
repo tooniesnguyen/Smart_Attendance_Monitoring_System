@@ -12,6 +12,45 @@
 - [x] Convert csv file to database (SQL)
 - [x] Displays the latest importer information
 
+
+## How to use this project
+```
+git clone https://github.com/tooniesnguyen/Smart_Attendance_Monitoring_System.git
+
+cd Smart_Attendance_Monitoring_System
+```
+
+### Import and run  database
+```
+$ cd database
+$ mysql -u [username] -p [new_database] < IOT_Face.sql
+ctrl + D
+$ sudo /etc/init.d/mysql start
+$ mysql -u [username] -p
+```
+
+### Add htdocs
+```
+$ cd statics
+$ sudo bindfs -o nonempty . /var/www/html
+```
+
+### Setup
+```
+# With conda env
+$ bash setup.sh
+$ server.py
+
+# Without conda env
+$ bash setup.sh
+
+# Config hostname and port
+$ server.py
+```
+### Open browse
+http://127.0.0.1/
+
+
 ## My database: [IOT_Face.sql](./database/IOT_Face.sql)
 ```
 +----+----------+----------------------+----------+-------+-------+-------+-------+-------+------+------+-------+-------+------+------+------+------+------+------+

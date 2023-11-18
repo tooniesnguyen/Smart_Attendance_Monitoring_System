@@ -1,4 +1,7 @@
 opencv-python == 4.8.1.78
 # torch == 1.13.1
 mysql-connector-python == 8.0.33
+mfrc522
+mfrc522-python
+RPi.GPIO
 

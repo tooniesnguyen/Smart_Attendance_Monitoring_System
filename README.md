@@ -57,7 +57,7 @@ http://127.0.0.1/
 ## On the client
 ![image](./images/hardware.jpg)
 
-### Connecting
+### Connect
 
 | Board pin name | Board pin | Physical RPi pin | RPi pin name | Beaglebone Black pin name |
 |----------------|-----------|------------------|--------------| --------------------------|

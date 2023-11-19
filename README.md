@@ -42,13 +42,13 @@ $ sudo bindfs -o nonempty . /var/www/html
 ```
 # With conda env
 $ bash setup.sh
-$ server.py
+$ python server.py
 
 # Without conda env
 $ bash setup.sh
 
 # Config hostname and port
-$ server.py
+$ python server.py
 ```
 ### Open browse
 http://127.0.0.1/

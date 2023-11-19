@@ -73,7 +73,7 @@ http://127.0.0.1/
 ### Setup and run client
 ```
 $ pip install -r requirements.txt
-$ client.py
+$ python client.py
 ```
 
 
